@@ -93,12 +93,13 @@ multiply(4, 3, function(answer){
 
 //Code Here 
 function contains(array, name, callback){
-  if (array.filter == name){
-    callback(true)
+  for (var i = 0; i < array.length; i++) {
+    if (array[i] === name) {
+        callback(true);
   } else {
     callback(false)
   }
-  
+}
 
 }
 // Do not edit the code below.
@@ -122,14 +123,9 @@ contains(names, 'Colt', function(result){
 
 //Code Here
 function uniq(array, callback){
-for(var i = 0; i < array.lenght; i++)
-for( var j = i + 1; j < array.lenght; j++){
-  if (array[i] === array[j]){
-    array.splice(j, 1)
-  }
-}
+  let unique = [...new Set(array)];
+  callback(unique)
 
-callback(array)
 }
 // Do not edit the code below.
 uniq(names, function(uniqArr){
@@ -169,14 +165,16 @@ each(names, function(item, indice){
 
 // Code here
 function getUserById(users, id, callback){
-  console.log(users[0].id);
-  for(let i = 0; i < users.lenght; i++){
-    if(users[i].id === id){
-      return callback(users[i]);
+  for(let i = 0; i < users.length; i++){
+    if(id === users[i].id) {
+      callback(users[i])
+
+
     }
   }
 
 }
+    
 // Do not edit the code below.
 var users = [
   {
